@@ -87,9 +87,10 @@ WSGI_APPLICATION = "course_service.wsgi.application"
 #     }
 # }
 DATABASES = {
-    "default": dj_database_url.config(
-        default=os.environ.get("DATABASE_URL"),
+    'default': dj_database_url.config(
+        default='postgres://localhost:5432/mydb',
         conn_max_age=600,
+        ssl_require=True
     )
 }
 
