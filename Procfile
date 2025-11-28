@@ -1,1 +1,1 @@
-web: gunicorn course_service.wsgi
+web: gunicorn course_service.wsgi:application --workers 2

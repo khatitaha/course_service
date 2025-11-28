@@ -1,5 +1,4 @@
-Django
-djangorestframework
-gunicorn
-psycopg2-binary
-dj-database-url
+psycopg2-binary  # For PostgreSQL adapter
+gunicorn         # WSGI server for production
+dj-database-url  # Parses Render's DATABASE_URL env var
+whitenoise       # Serves static files (optional but recommended for free tier)
