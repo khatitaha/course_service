@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import dj_database_url
+import os
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -73,15 +76,21 @@ WSGI_APPLICATION = "course_service.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'course_db3',       
+#         'USER': 'postgres',        
+#         'PASSWORD': '123', 
+#         'HOST': 'localhost',        
+#         'PORT': '5430',             
+#     }
+# }
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'course_db3',       
-        'USER': 'postgres',        
-        'PASSWORD': '123', 
-        'HOST': 'localhost',        
-        'PORT': '5430',             
-    }
+    "default": dj_database_url.config(
+        default=os.environ.get("DATABASE_URL"),
+        conn_max_age=600,
+    )
 }
 
 
